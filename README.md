@@ -1,16 +1,25 @@
 # 🧾 ATS Resume Scanner using Gemini Pro
 
-This project is an AI-powered **resume evaluation tool** built with **Streamlit** and **Google Gemini Pro**. It allows job seekers or recruiters to upload resumes and compare them against a given job description. The app intelligently evaluates alignment and generates both feedback and match percentage — just like a real ATS!
+An upgraded AI-powered resume evaluation tool that uses **Google Gemini Pro** and **Streamlit** to analyze a candidate's resume against a given job description (JD). It returns a structured response in JSON format, including JD match percentage, missing keywords, and a profile summary.
 
 ---
 
 ## 🚀 Features
 
 - 📤 Upload resume in PDF format
-- 🧠 Gemini Pro evaluates resume content
-- 📈 Get a professional review of strengths and weaknesses
-- 🎯 Get a percentage match score with missing keyword suggestions
-- 🤖 Built with Google's Gemini 2.5 Pro via `google.generativeai`
+- 📄 Paste the job description
+- ⚖️ Gemini Pro evaluates resume and JD
+- ✅ Returns structured feedback in this format:
+
+```json
+{
+  "JD Match": "85%",
+  "MissingKeywords": ["Python", "SQL"],
+  "Profile Summary": "The candidate has strong frontend skills but lacks backend experience."
+}
+```
+
+- 🤖 Powered by Gemini Pro 2.5 (via `google.generativeai`)
 
 ---
 
@@ -40,7 +49,7 @@ pip install -r requirements.txt
 
 ## 🔑 Environment Setup
 
-Create a `.env` file in the root folder and add your Google API key:
+Create a `.env` file in the root directory and add your Google API key:
 
 ```env
 GOOGLE_API_KEY=your_google_api_key
@@ -55,9 +64,10 @@ streamlit run app.py
 ```
 
 Then:
-- Enter your **job description**
-- Upload your **resume (PDF)**
-- Click “Tell me about the Resume” or “Percentage Match”
+- Paste a job description
+- Upload your resume (PDF)
+- Click **Submit**
+- Get JD Match %, missing keywords, and a profile summary
 
 ---
 
@@ -65,17 +75,18 @@ Then:
 
 ```
 ats-resume-scanner-gemini/
-├── app.py               # Main Streamlit app
-├── requirements.txt     # Dependencies
-└── .env                 # Your API Key (excluded from Git)
+├── app.py               # Streamlit app
+├── requirements.txt     # Python dependencies
+└── .env                 # API key file (not tracked)
 ```
 
 ---
 
-## 🖼 Sample Outputs
+## 💡 Sample Use Case
 
-- ✅ Resume feedback like a hiring manager
-- 📊 Match % score with missing keyword summary
+✅ Paste a Data Scientist JD  
+📤 Upload your resume  
+🎯 Get back Gemini's intelligent review and score
 
 ---
 
@@ -89,10 +100,10 @@ This project is licensed under the **MIT License**.
 
 - [Google Generative AI](https://ai.google.dev)
 - [Streamlit](https://streamlit.io)
-- [pdf2image](https://github.com/Belval/pdf2image)
+- [PyPDF2](https://pypi.org/project/PyPDF2/)
 
 ---
 
 ## 🤝 Contributions
 
-Feel free to fork the repo, raise issues, or submit pull requests to improve the project!
+PRs and feedback are always welcome! Let's make AI-powered job prep accessible for everyone.
